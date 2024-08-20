@@ -1,10 +1,13 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const cors = require('cors');  // Importa o middleware CORS
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para parsear o corpo das requisições
-app.use(bodyParser.json());
+// Habilita CORS para todas as origens
+app.use(cors());
+
+// Middleware para parsear o corpo das requisições em JSON
+app.use(express.json());
 
 // Rota para receber os dados do webhook
 app.post('/webhook', (req, res) => {
